@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linked List With Events (Mixpanel)</title>
-    <link rel="stylesheet" href="/css/linklist2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/css/linklist-dark.css"> -->
+    <link rel="stylesheet" href="/css/linklist-light.css">
 </head>
 
 <body>
@@ -25,7 +27,7 @@
             <div id="relative-selector">
                 <label for="relative">Duration:</label>
                 <select id="relative">
-                    <option value="">-- Select Duration --</option> <!-- Will be filled from config -->
+                    <option value="">-- Select Duration --</option> 
                 </select>
             </div>
 
@@ -51,15 +53,39 @@
 
     <!-- ========= LINKED LIST (Rendered by EJS immediately) ========= -->
     <div class="events-container" id="events-container">
+        <button class="properties-button" id="toggle-props-btn" style="margin: 10px 0; padding: 5px 10px;">Show All Properties</button>
         <% linkedList.forEach(node => { %>
             <div class="event-block">
                 <div class="seg-event">
                     <p><span class="prop-head">Interface:</span> <span class="interface-text"><%= node.Interface %></span></p>
-                    <p><span class="prop-head">Identify:</span> <span class="identify-text"></span></p>
+                    <!-- <p><span class="prop-head">Identify:</span> <span class="identify-text"></span></p> -->
                     <% if (node.Props) { %>
-                        <p><span class="prop-head">Props:</span>
-                            <pre class="props-text"><%= JSON.stringify(node.Props, null, 2) %></pre>
-                        </p>
+                        <div class="props-schema">
+                            <p><span class="prop-head">Props:</span></p>
+                        
+                            <% if (Array.isArray(node.Props.properties) && node.Props.properties.length > 0) { %>
+                                <ul>
+                                    <% node.Props.properties.forEach(prop => { %>
+                                        <li>
+                                            <strong><%= prop.name %><%= prop.optional ? " ?" : "" %>:</strong> 
+                                            <% if (Array.isArray(prop.type)) { %>
+                                                <%= prop.type.join(" | ") %>
+                                            <% } else { %>
+                                                <%= prop.type %>
+                                            <% } %>
+                                            <% if (prop.values) { %>
+                                                : [<%= prop.values.join(", ") %>]
+                                            <% } %>
+                                        </li>
+                                    <% }) %>
+                                </ul>
+                            <% } else { %>
+                                <p>
+                                    <strong>Props<%= node.Props.optional ? " ?" : "" %>:</strong> 
+                                    <%= node.Props.type || "unknown" %>
+                                </p>
+                            <% } %>
+                        </div>
                     <% } else { %>
                         <p><span class="prop-head">Props:</span> None</p>
                     <% } %>
@@ -67,11 +93,25 @@
 
                 <div class="mix-event">
                     <% node.LinkedList.forEach(event => { %>
-                        <div class="linked-event">
+                        <div class="linked-event" style="border: 2px solid <%= validator.getBorderColor(event.properties, node.Props) %>;">
                             <p><strong>Event:</strong> <%= event.name %></p>
                             <p><strong>Time:</strong> <%= new Date(event.time).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' }) %></p>
                             <p><strong>Properties:</strong></p>
-                            <pre><%= JSON.stringify(event.properties, null, 2) %></pre>
+                            <% const keyColorMap = validator.getKeyIssueMap(event.properties, node.Props); %>
+                            <ul class="event-properties">
+                                <% Object.entries(event.properties || {}).forEach(([key, value]) => { %>
+                                    <% if (key.startsWith('$')) { %>
+                                        <li class="hidden-prop" style="display:none;">
+                                            <strong><%= key %></strong>: <%= JSON.stringify(value) %>
+                                        </li>
+                                    <% } else { %>
+                                        <% const color = keyColorMap[key] || 'Black'; %>
+                                        <li>
+                                            <strong style="color: <%= color %>"><%= key %></strong>: <%= JSON.stringify(value) %>
+                                        </li>
+                                    <% } %>
+                                <% }) %>
+                            </ul>
                             <% if(node.Props) { %>
                                 <div>
                                     <%- validator.renderValidationHTML(event.properties, node.Props) %>

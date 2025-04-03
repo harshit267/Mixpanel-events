@@ -1,4 +1,24 @@
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggle-props-btn');
+    let showingAll = false;
+
+    toggleBtn.addEventListener('click', () => {
+        const hiddenProps = document.querySelectorAll('.hidden-prop');
+        hiddenProps.forEach(el => {
+            el.style.display = showingAll ? 'none' : 'list-item';
+        });
+
+        toggleBtn.textContent = showingAll ? 'Show All Properties' : 'Hide $ Properties';
+        showingAll = !showingAll;
+    });
+});
+
 // ------------------------ Mode Switch ------------------------
+
 const modeSelector = document.getElementById('mode');
 const relativeSelector = document.getElementById('relative-selector');
 const customDate = document.getElementById('custom-date');
@@ -14,6 +34,7 @@ modeSelector.addEventListener('change', () => {
 });
 
 // ------------------------ Search ------------------------
+
 const searchInput = document.getElementById('search-input');
 const noResult = document.getElementById('no-result');
 
@@ -37,7 +58,8 @@ searchInput.addEventListener('input', function () {
     noResult.style.display = found ? 'none' : 'block';
 });
 
-// ------------------------ Load Config ------------------------
+// ------------------------ Load Config & Restore Filters ------------------------
+
 window.addEventListener('DOMContentLoaded', async () => {
     const config = await fetch('/api/get-config').then(res => res.json());
 
@@ -58,12 +80,35 @@ window.addEventListener('DOMContentLoaded', async () => {
             opt.textContent = d.label;
             durationSelect.appendChild(opt);
         });
+
+        // ===== Restore Filters =====
+        if (localStorage.getItem('mode')) {
+            modeSelector.value = localStorage.getItem('mode');
+            modeSelector.dispatchEvent(new Event('change'));
+        }
+        if (localStorage.getItem('relative')) document.getElementById('relative').value = localStorage.getItem('relative');
+        if (localStorage.getItem('from_date')) document.getElementById('from_date').value = localStorage.getItem('from_date');
+        if (localStorage.getItem('to_date')) document.getElementById('to_date').value = localStorage.getItem('to_date');
+        if (localStorage.getItem('device')) document.getElementById('device').value = localStorage.getItem('device');
+        if (localStorage.getItem('search')) document.getElementById('search-input').value = localStorage.getItem('search');
+
+        // re-trigger search
+        searchInput.dispatchEvent(new Event('input'));
+
+        // optional: clear for next session
+        localStorage.removeItem('mode');
+        localStorage.removeItem('relative');
+        localStorage.removeItem('from_date');
+        localStorage.removeItem('to_date');
+        localStorage.removeItem('device');
+        localStorage.removeItem('search');
     }
 });
 
 // ------------------------ Fetch Button ------------------------
+
 document.getElementById('fetch-btn').addEventListener('click', async () => {
-    const mode = document.getElementById('mode').value;
+    const mode = modeSelector.value;
     const relative = document.getElementById('relative').value;
     const model = document.getElementById('device').value;
 
@@ -77,6 +122,14 @@ document.getElementById('fetch-btn').addEventListener('click', async () => {
 
     if (model) body.model = model;
 
+    // ===== Store Filters Before Reload =====
+    localStorage.setItem('mode', mode);
+    localStorage.setItem('relative', relative);
+    localStorage.setItem('from_date', document.getElementById('from_date').value);
+    localStorage.setItem('to_date', document.getElementById('to_date').value);
+    localStorage.setItem('device', model);
+    localStorage.setItem('search', searchInput.value);
+
     const res = await fetch('/api/link-events', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -85,8 +138,8 @@ document.getElementById('fetch-btn').addEventListener('click', async () => {
 
     const data = await res.json();
     if (data.success) {
-        // alert('✅ Events fetched & linked successfully!');
-        // location.reload(); 
+        // alert('✅ Events fetched, linked & validated!');
+        location.reload(); 
     } else {
         alert("❌ Failed: " + data.error);
     }

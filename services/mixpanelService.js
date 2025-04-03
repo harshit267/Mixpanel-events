@@ -30,11 +30,9 @@ const fetchDynamicMixpanelEvents = async (fromDateMoment, toDateMoment, namespac
         }
     });
 
-    const limitedEvents = response.data.slice(0, 300);
+    const limitedEvents = response.data.slice(0, 300); // You were limiting here
 
     return limitedEvents;
 };
-
-
 
 module.exports = { fetchDynamicMixpanelEvents };

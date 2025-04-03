@@ -9,11 +9,22 @@ const validator = require('../services/eventValidator');
 
 router.get('/events', async (req, res) => {
     try {
-        const linkedList = fetchLinkedList(); // ✅ Fetch, don't create
-        res.render('eventpage', { linkedList , validator });
+        let linkedList = fetchLinkedList();
+
+        // If linked list is empty or not an array, fall back to create
+        if (!Array.isArray(linkedList) || linkedList.length === 0) {
+            console.warn('⚠️ Empty or invalid linked list, creating new one...');
+            createLinkedLists();
+            linkedList = fetchLinkedList();
+
+            // Save it to file
+            // fs.writeFileSync(LINKED_LIST_PATH, JSON.stringify(linkedList, null, 4));
+        }
+
+        res.render('eventpage', { linkedList, validator });
     } catch (error) {
-        console.error('❌ Error fetching linked list:', error);
-        res.status(500).send('Error fetching linked list');
+        console.error('❌ Error fetching or creating linked list:', error);
+        res.status(500).send('Error preparing event page');
     }
 });
 
