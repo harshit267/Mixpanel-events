@@ -1,0 +1,6408 @@
+[
+    {
+      "interface": "AccountDelete",
+      "properties": [
+          {
+              "name": "eventName",
+              "type": "\"Account Delete\"",
+              "optional": false,
+              "values": ["Account Delete"]
+          },
+          {
+              "name": "identify",
+              "type": "IdentifyCall",
+              "optional": true
+          },
+          {
+              "name": "props",
+              "type": "undefined",
+              "optional": true
+          }
+      ]
+  },
+  
+  {
+    "interface": "Assignment",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment\"",
+            "optional": false,
+            "values": ["Assignment"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "AssignmentObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_create_session_uuid",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "assignment_create_status",
+                    "type": "string",
+                    "optional": true,
+                    "values": ["inactive", "active", "archived", "closed"]
+                },
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "join_through",
+                    "type": "string",
+                    "optional": true,
+                    "values": ["code", "link"]
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "status",
+                    "type": "string",
+                    "optional": true,
+                    "values": ["joined", "started", "completed"]
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "users_completed_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_joined_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_started_count",
+                    "type": "number",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+  },
+  {
+    "interface": "AssignmentCreateMetadata",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Create Metadata\"",
+            "optional": false,
+            "values": ["Assignment Create Metadata"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "AssignmentMetadataObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "assignment_create_session_uuid",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AssignmentHome",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Home\"",
+            "optional": false,
+            "values": ["Assignment Home"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "AssignmentHomeObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "active_tab",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["inactive", "active", "archived", "closed"]
+                },
+                {
+                    "name": "assignment_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "filter_by",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "filter_by_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "sort_by",
+                    "type": "string",
+                    "optional": true,
+                    "values": [
+                        "create date asc",
+                        "create date desc",
+                        "title asc",
+                        "title desc",
+                        "due date asc",
+                        "due date desc"
+                    ]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "BookmarksViewed",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Bookmarks\"",
+            "optional": false,
+            "values": ["Bookmarks"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "bookmarks_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Chapter",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Chapter\"",
+            "optional": false,
+            "values": ["Chapter"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "chapter_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "chapter_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Exam",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Exam\"",
+            "optional": false,
+            "values": ["Exam"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "exam_previously_completed",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "exam_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "percent_of_lessons_completed",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "suggested_lessons_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Home",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Home\"",
+            "optional": false,
+            "values": ["Home"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "exam_shown",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "review_shown",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Lesson",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Lesson\"",
+            "optional": false,
+            "values": ["Lesson"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "LessonEventObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "LibraryBarcodeResult",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Library Barcode Result\"",
+            "optional": false,
+            "values": ["Library Barcode Result"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "book_found",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "book_isbn",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_isbn13",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_pages",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_publisher",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "books_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Login",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Login\"",
+            "optional": false,
+            "values": ["Login"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "available_login_methods",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingBarcodeResult",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Barcode Result\"",
+            "optional": false,
+            "values": ["Onboarding Barcode Result"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "book_found",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "book_isbn",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_isbn13",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_pages",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_publisher",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "book_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingCountry",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Country\"",
+            "optional": false,
+            "values": ["Onboarding Country"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingGrade",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Grade\"",
+            "optional": false,
+            "values": ["Onboarding Grade"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingIntro",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Intro\"",
+            "optional": false,
+            "values": ["Onboarding Intro"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "invitation_request_shown",
+                    "type": "boolean",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingNotification",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Notification\"",
+            "optional": false,
+            "values": ["Onboarding Notification"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "OnboardingRegion",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Region\"",
+            "optional": false,
+            "values": ["Onboarding Region"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingSchool",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding School\"",
+            "optional": false,
+            "values": ["Onboarding School"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "location_sharing_approved",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "preloaded_schools_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingSubject",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Subject\"",
+            "optional": false,
+            "values": ["Onboarding Subject"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "grade",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingUserRole",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding User Role\"",
+            "optional": false,
+            "values": ["Onboarding User Role"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Payment",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Payment\"",
+            "optional": false,
+            "values": ["Payment"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "price",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ProfileActivity",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Profile Activity\"",
+            "optional": false,
+            "values": ["Profile Activity"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "has_activity",
+                    "type": "boolean",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Quiz",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz\"",
+            "optional": false,
+            "values": ["Quiz"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "QuizEventObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "QuizQuestion",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Question\"",
+            "optional": false,
+            "values": ["Quiz Question"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "answered_correctly",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "correct_answer_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "number_of_attempt",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "option_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "question_character_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "question_difficulty_level",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "question_number",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "question_type",
+                    "type": "QuizQuestionType",
+                    "optional": false,
+                    "values" : ["multiChoice" , "singleChoice" , "freeText"]
+                },
+                {
+                    "name": "question_word_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "time_taken_to_answer",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "wrong_answer_count",
+                    "type": "number",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "QuizQuestionCountSelector",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Question Count Selector\"",
+            "optional": false,
+            "values": ["Quiz Question Count Selector"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "QuizEventObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "QuizResult",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Result\"",
+            "optional": false,
+            "values": ["Quiz Result"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "average_correctness",
+                            "type": ["null", "number"],
+                            "optional": false
+                        },
+                        {
+                            "name": "quizzes_completed",
+                            "type": ["null", "number"],
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "points_earned",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_consecutive_correct",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_consecutive_incorrect",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_correct_answers_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_correctness_percent",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_incorrect_answers_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_questions_attempted",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "stars_gained",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SearchImage",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Search Image\"",
+            "optional": false,
+            "values": ["Search Image"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SearchResult",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Search Result\"",
+            "optional": false,
+            "values": ["Search Result"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "book_found",
+                    "type": "object",
+                    "optional": true
+                },
+                {
+                    "name": "chapter_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lessons_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "search_query",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SearchText",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Search Text\"",
+            "optional": false,
+            "values": ["Search Text"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "Settings",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Settings\"",
+            "optional": false,
+            "values": ["Settings"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": true,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "userId",
+                            "type": "string",
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "app_ui_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SignUp",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Sign Up\"",
+            "optional": false,
+            "values": ["Sign Up"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "available_signup_methods",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Subject",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Subject\"",
+            "optional": false,
+            "values": ["Subject"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "subject_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "Video",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Video\"",
+            "optional": false,
+            "values": ["Video"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "audio_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "playback_speed",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "position",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "position_percent",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "sound",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subtitle_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "video_total_length",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ABTestExperiment",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"AB Test Shown\"",
+            "optional": false,
+            "values": ["AB Test Shown"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "test_name",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "variant",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AccountDeleteCancelled",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Account Delete Cancelled\"",
+            "optional": false,
+            "values": ["Account Delete Cancelled"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "AccountDeleteCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Account Delete Completed\"",
+            "optional": false,
+            "values": ["Account Delete Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "AccountDeleteStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Account Delete Started\"",
+            "optional": false,
+            "values": ["Account Delete Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "AssignmentCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Completed\"",
+            "optional": false,
+            "values": ["Assignment Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "AssignmentMetadataObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "users_completed_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_joined_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_started_count",
+                    "type": "number",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AssignmentCreateCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Create Completed\"",
+            "optional": false,
+            "values": ["Assignment Create Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "users_completed_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_joined_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_started_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "assignment_create_session_uuid",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AssignmentCreateMetadataCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Create Metadata Completed\"",
+            "optional": false,
+            "values": ["Assignment Create Metadata Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "AssignmentMetadataObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "users_completed_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_joined_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_started_count",
+                    "type": "number",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AssignmentCreateStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Create Started\"",
+            "optional": false,
+            "values": ["Assignment Create Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_create_session_uuid",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["lesson", "assignment duplicate", "assignment home"]
+                },
+                {
+                    "name": "lesson_code_coming_from",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_title_coming_from",
+                    "type": "string",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AssignmentJoined",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Joined\"",
+            "optional": false,
+            "values": ["Assignment Joined"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "users_completed_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_joined_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_started_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "join_method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["code", "link"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AssignmentShared",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Shared\"",
+            "optional": false,
+            "values": ["Assignment Shared"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "users_completed_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_joined_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_started_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "share_method",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "link",
+                        "code",
+                        "Google Classroom",
+                        "Microsoft Teams",
+                        "WhatsApp",
+                        "Facebook",
+                        "Twitter",
+                        "Email",
+                        "SMS",
+                        "Other"
+                    ]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AssignmentStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Started\"",
+            "optional": false,
+            "values": ["Assignment Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "AssignmentMetadataObject",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "users_completed_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_joined_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_started_count",
+                    "type": "number",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "AssignmentTaskCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Assignment Task Completed\"",
+            "optional": false,
+            "values": ["Assignment Task Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "assignment_id",
+                    "type": ["undefined", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "assignment_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "creator_user_id",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "days_left",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "description_added",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_codes",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_titles",
+                    "type": "string[]",
+                    "optional": false
+                },
+                {
+                    "name": "tasks_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "users_completed_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_joined_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "users_started_count",
+                    "type": "number",
+                    "optional": true
+                },
+                {
+                    "name": "audio_language",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "percentage_completed",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "subtitle_language",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "task_type",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["video", "quiz"]
+                },
+                {
+                    "name": "tasks_completed_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "BookmarkLessonCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Bookmark Lesson Completed\"",
+            "optional": false,
+            "values": ["Bookmark Lesson Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "bookmarks_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "BookmarkLessonDeleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Bookmark Lesson Deleted\"",
+            "optional": false,
+            "values": ["Bookmark Lesson Deleted"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "bookmarks_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ContentCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Content Completed\"",
+            "optional": false,
+            "values": ["Content Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "content_type",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["video", "quiz", "concept"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ContentFilterModified",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Content Filter Modified\"",
+            "optional": false,
+            "values": ["Content Filter Modified"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "grade_age",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "ui_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ContentFilterViewed",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Content Filter Opened\"",
+            "optional": false,
+            "values": ["Content Filter Opened"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "grade_age",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "ui_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ContentStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Content Started\"",
+            "optional": false,
+            "values": ["Content Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "content_type",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["video", "quiz", "concept"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "HomeGradeSelected",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Home Grade Selected\"",
+            "optional": false,
+            "values": ["Home Grade Selected"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "exam_shown",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "review_shown",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "HomeSubjectSelected",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Home Subject Selected\"",
+            "optional": false,
+            "values": ["Home Subject Selected"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "current_subject_code",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "current_subject_title",
+                            "type": "string",
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "exam_shown",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "review_shown",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "LessonDownloaded",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Lesson Download Started\"",
+            "optional": false,
+            "values": ["Lesson Download Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "downloaded_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "downloaded_lessons_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "LessonSelected",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Lesson Selected\"",
+            "optional": false,
+            "values": ["Lesson Selected"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "book_found",
+                    "type": "object",
+                    "optional": false
+                },
+                {
+                    "name": "chapter_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "list_index",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subjects_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "LoginCancelled",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Login Cancelled\"",
+            "optional": false,
+            "values": ["Login Cancelled"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "available_login_methods",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "LoginCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Login Completed\"",
+            "optional": false,
+            "values": ["Login Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "available_login_methods",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "LoginFailed",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Login Failed\"",
+            "optional": false,
+            "values": ["Login Failed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "available_login_methods",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "failure_reason",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "LoginStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Login Started\"",
+            "optional": false,
+            "values": ["Login Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "LogoutCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Logout Completed\"",
+            "optional": false,
+            "values": ["Logout Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "MenuSelected",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Menu Selected\"",
+            "optional": false,
+            "values": ["Menu Selected"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "item_selected",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["home", "profile", "search", "assignments", "bookmarks", "camera"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Completed\"",
+            "optional": false,
+            "values": ["Onboarding Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "accept_notifications",
+                            "type": "boolean",
+                            "optional": true
+                        },
+                        {
+                            "name": "country_code",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "country_code_detected",
+                            "type": ["null", "string"],
+                            "optional": false
+                        },
+                        {
+                            "name": "country_title",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "country_title_detected",
+                            "type": ["null", "string"],
+                            "optional": false
+                        },
+                        {
+                            "name": "grade_age",
+                            "type": ["null", "number"],
+                            "optional": false
+                        },
+                        {
+                            "name": "grade_id",
+                            "type": "number",
+                            "optional": false
+                        },
+                        {
+                            "name": "grade_title",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "region_title",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_type",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_type_id",
+                            "type": "number",
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "age_over_13",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "grade_age",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "grade_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "method",
+                    "type": ["null", "string"],
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                },
+                {
+                    "name": "parents_consent",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "skipped_sign_up",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "subject",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingCountryCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Country Completed\"",
+            "optional": false,
+            "values": ["Onboarding Country Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "country_code",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "country_code_detected",
+                            "type": ["null", "string"],
+                            "optional": false
+                        },
+                        {
+                            "name": "country_title",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "country_title_detected",
+                            "type": ["null", "string"],
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingGradeCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Grade Completed\"",
+            "optional": false,
+            "values": ["Onboarding Grade Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "grade_age",
+                            "type": ["null", "number"],
+                            "optional": false
+                        },
+                        {
+                            "name": "grade_id",
+                            "type": "number",
+                            "optional": false
+                        },
+                        {
+                            "name": "grade_title",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_type",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_type_id",
+                            "type": "number",
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "grade_age",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "grade_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingIntroCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Intro Completed\"",
+            "optional": false,
+            "values": ["Onboarding Intro Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": true,
+            "properties": [
+                {
+                    "name": "action",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingNotificationCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Notification Completed\"",
+            "optional": false,
+            "values": ["Onboarding Notification Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "OnboardingRegionCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Region Completed\"",
+            "optional": false,
+            "values": ["Onboarding Region Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "region_title",
+                            "type": "string",
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingSchoolCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding School Completed\"",
+            "optional": false,
+            "values": ["Onboarding School Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "school_address",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_city",
+                            "type": ["null", "string"],
+                            "optional": false
+                        },
+                        {
+                            "name": "school_country",
+                            "type": "string",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_image_url",
+                            "type": ["null", "string"],
+                            "optional": false
+                        },
+                        {
+                            "name": "school_latitude",
+                            "type": "number",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_longitude",
+                            "type": "number",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_place_id",
+                            "type": "number",
+                            "optional": false
+                        },
+                        {
+                            "name": "school_region",
+                            "type": ["null", "string"],
+                            "optional": false
+                        },
+                        {
+                            "name": "school_title",
+                            "type": "string",
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "raw_google_places_data",
+                    "type": "object",
+                    "optional": false
+                },
+                {
+                    "name": "school_address",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_city",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "school_country",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_image_url",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "school_latitude",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_longitude",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_place_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_region",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "school_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "search_query",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingSchoolSkipped",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding School Skipped\"",
+            "optional": false,
+            "values": ["Onboarding School Skipped"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "search_query",
+                    "type": "string",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingSignUpCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Sign Up Completed\"",
+            "optional": false,
+            "values": ["Onboarding Sign Up Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "age_over_13",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "avatar_selected",
+                    "type": ["null", "string"],
+                    "optional": true
+                },
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "grade_age",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "grade_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "has_exam",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                },
+                {
+                    "name": "parents_consent",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "skipped_sign_up",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "subject",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "user_role",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingSignUpStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Sign Up Started\"",
+            "optional": false,
+            "values": ["Onboarding Sign Up Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "avatar_selected",
+                    "type": ["null", "string"],
+                    "optional": true
+                },
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "grade_age",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "grade_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "has_exam",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "user_role",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Started\"",
+            "optional": false,
+            "values": ["Onboarding Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "OnboardingSubjectCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding Subject Completed\"",
+            "optional": false,
+            "values": ["Onboarding Subject Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "avatar_selected",
+                    "type": ["null", "string"],
+                    "optional": true
+                },
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_code_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_selected",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "grade_age",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "grade_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "grade_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "has_exam",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "region_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_id",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "school_type_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "user_role",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "OnboardingUserRoleCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Onboarding User Role Completed\"",
+            "optional": false,
+            "values": ["Onboarding User Role Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "user_role",
+                            "type": "string",
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "country_code_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "country_title_detected",
+                    "type": ["null", "string"],
+                    "optional": false
+                },
+                {
+                    "name": "user_role",
+                    "type": "string",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "PaymentCancelled",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Payment Cancelled\"",
+            "optional": false,
+            "values": ["Payment Cancelled"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "interuption_reason",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subscription_type",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["monthly", "annual"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "PaymentCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Payment Completed\"",
+            "optional": false,
+            "values": ["Payment Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "price",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subscription_type",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["monthly", "annual"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "PaymentInterrupted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Payment Interrupted\"",
+            "optional": false,
+            "values": ["Payment Interrupted"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "interuption_reason",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subscription_type",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["monthly", "annual"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "PaymentStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Payment Started\"",
+            "optional": false,
+            "values": ["Payment Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "subscription_type",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["monthly", "annual"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "QuizCancelled",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Cancelled\"",
+            "optional": false,
+            "values": ["Quiz Cancelled"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "QuizCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Completed\"",
+            "optional": false,
+            "values": ["Quiz Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "QuizCompletedOver70",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Completed - Seventy Percent Correct\"",
+            "optional": false,
+            "values": ["Quiz Completed - Seventy Percent Correct"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_score",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "QuizQuestionCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Question Completed\"",
+            "optional": false,
+            "values": ["Quiz Question Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404", "500", "home", "lesson", "license", "login", "onboarding", "privacy", "profile",
+                        "quiz-preview", "settings", "signup", "terms", "search", "assignments", "chapter", "marketing", "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "answered_correctly",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "correct_answer_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "option_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "question_character_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "question_difficulty_level",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "question_id",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "question_number",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "question_type",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["multiChoice", "singleChoice", "freeText"]
+                },
+                {
+                    "name": "question_word_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "time_taken_to_answer",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "wrong_answer_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "QuizResultRestartSelected",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Result Restart Selected\"",
+            "optional": false,
+            "values": ["Quiz Result Restart Selected"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404", "500", "home", "lesson", "license", "login", "onboarding", "privacy", "profile",
+                        "quiz-preview", "settings", "signup", "terms", "search", "assignments", "chapter", "marketing", "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+
+{
+    "interface": "QuizStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Quiz Started\"",
+            "optional": false,
+            "values": ["Quiz Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404", "500", "home", "lesson", "license", "login", "onboarding", "privacy", "profile",
+                        "quiz-preview", "settings", "signup", "terms", "search", "assignments", "chapter", "marketing", "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ReviewCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Review Completed\"",
+            "optional": false,
+            "values": ["Review Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "comment",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "score",
+                    "type": "number",
+                    "optional": false,
+                    "values": [1, 2, 3, 4, 5]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ReviewFiveStarCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Review Completed With 5 Stars\"",
+            "optional": false,
+            "values": ["Review Completed With 5 Stars"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "ReviewStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Review Started\"",
+            "optional": false,
+            "values": ["Review Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "comment",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "score",
+                    "type": "number",
+                    "optional": false,
+                    "values": [1, 2, 3, 4, 5]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "ReviewStoreRating",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Review Store Rating\"",
+            "optional": false,
+            "values": ["Review Store Rating"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "comment",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "score",
+                    "type": "number",
+                    "optional": false,
+                    "values": [1, 2, 3, 4, 5]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SearchImageStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Search Image Started\"",
+            "optional": false,
+            "values": ["Search Image Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SearchImageSubmitted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Search Image Submitted\"",
+            "optional": false,
+            "values": ["Search Image Submitted"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SearchTextStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Search Text Started\"",
+            "optional": false,
+            "values": ["Search Text Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SearchTextSubmitted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Search Text Submitted\"",
+            "optional": false,
+            "values": ["Search Text Submitted"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "chapter_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "query",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subjects_count",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SettingsModified",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Settings Modified\"",
+            "optional": false,
+            "values": ["Settings Modified"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "Partial<UserTraitObject>",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "app_ui_language",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["ar", "de", "en", "es", "fi", "fr", "pl", "sv", "th", "uk"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SignUpCancelled",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Sign Up Cancelled\"",
+            "optional": false,
+            "values": ["Sign Up Cancelled"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "available_signup_methods",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SignUpCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Sign Up Completed\"",
+            "optional": false,
+            "values": ["Sign Up Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "age_over_13",
+                    "type": "boolean",
+                    "optional": false
+                },
+                {
+                    "name": "available_signup_methods",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                },
+                {
+                    "name": "parents_consent",
+                    "type": "boolean",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SignUpFailed",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Sign Up Failed\"",
+            "optional": false,
+            "values": ["Sign Up Failed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "available_signup_methods",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SignUpStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Sign Up Started\"",
+            "optional": false,
+            "values": ["Sign Up Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": true,
+            "properties": [
+                {
+                    "name": "failure_reason",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "method",
+                    "type": "string",
+                    "optional": false,
+                    "values": ["Google", "Apple", "Microsoft", "Vidis"]
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "SystemAppClosed",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"System App Closed\"",
+            "optional": false,
+            "values": ["System App Closed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SystemAppOpened",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"System App Opened\"",
+            "optional": false,
+            "values": ["System App Opened"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SystemAppRemoved",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"System App Removed\"",
+            "optional": false,
+            "values": ["System App Removed"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SystemAppUpdated",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"System App Updated\"",
+            "optional": false,
+            "values": ["System App Updated"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SystemApproved",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"System Approved\"",
+            "optional": false,
+            "values": ["System Approved"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SystemLogIn",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"System Log In\"",
+            "optional": false,
+            "values": ["System Log In"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SystemLogOut",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"System Log Out\"",
+            "optional": false,
+            "values": ["System Log Out"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "SystemSignUp",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"System Sign Up\"",
+            "optional": false,
+            "values": ["System Sign Up"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "undefined",
+            "optional": true
+        }
+    ]
+},
+{
+    "interface": "VideoCompleted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Video Completed\"",
+            "optional": false,
+            "values": ["Video Completed"]
+        },
+        {
+            "name": "identify",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "traits",
+                    "type": "object",
+                    "optional": false,
+                    "properties": [
+                        {
+                            "name": "videos_completed",
+                            "type": "number",
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "audio_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "playback_speed",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "position",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "position_percent",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "sound",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subtitle_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "video_total_length",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "VideoPlaying",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Video Playing\"",
+            "optional": false,
+            "values": ["Video Playing"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "audio_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "playback_speed",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "position",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "position_percent",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "sound",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subtitle_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "video_total_length",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+},
+{
+    "interface": "VideoStarted",
+    "properties": [
+        {
+            "name": "eventName",
+            "type": "\"Video Started\"",
+            "optional": false,
+            "values": ["Video Started"]
+        },
+        {
+            "name": "identify",
+            "type": "IdentifyCall",
+            "optional": true
+        },
+        {
+            "name": "props",
+            "type": "object",
+            "optional": false,
+            "properties": [
+                {
+                    "name": "audio_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "coming_from",
+                    "type": "string",
+                    "optional": false,
+                    "values": [
+                        "404",
+                        "500",
+                        "home",
+                        "lesson",
+                        "license",
+                        "login",
+                        "onboarding",
+                        "privacy",
+                        "profile",
+                        "quiz-preview",
+                        "settings",
+                        "signup",
+                        "terms",
+                        "search",
+                        "assignments",
+                        "chapter",
+                        "marketing",
+                        "bookmarks"
+                    ]
+                },
+                {
+                    "name": "concept_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "lesson_offline",
+                    "type": "boolean",
+                    "optional": true
+                },
+                {
+                    "name": "lesson_star_count",
+                    "type": ["null", "number"],
+                    "optional": false
+                },
+                {
+                    "name": "lesson_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "playback_speed",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "position",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "position_percent",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "quiz_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "quiz_question_count",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "sound",
+                    "type": "number",
+                    "optional": false
+                },
+                {
+                    "name": "subject_code",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subject_title",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "subtitle_language",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "video_previously_completed",
+                    "type": ["null", "boolean"],
+                    "optional": false
+                },
+                {
+                    "name": "video_total_length",
+                    "type": "number",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+}
+
+
+
+
+
+]
