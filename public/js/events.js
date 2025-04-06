@@ -66,6 +66,29 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (config.success) {
         const deviceSelect = document.getElementById('device');
         const durationSelect = document.getElementById('relative');
+        const versionSelect = document.getElementById('version');
+        const buildSelect = document.getElementById('build');
+        const version = versionSelect.value;
+        const build = buildSelect.value;
+
+        if (version) body.version = version;
+        if (build) body.build = build;
+
+
+        config.allowedVersions.forEach(v => {
+            const opt = document.createElement('option');
+            opt.value = v;
+            opt.textContent = v;
+            versionSelect.appendChild(opt);
+        });
+
+        config.allowedBuilds.forEach(b => {
+            const opt = document.createElement('option');
+            opt.value = b;
+            opt.textContent = b;
+            buildSelect.appendChild(opt);
+        });
+
 
         config.allowedDevices.forEach(device => {
             const opt = document.createElement('option');
@@ -91,7 +114,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         if (localStorage.getItem('to_date')) document.getElementById('to_date').value = localStorage.getItem('to_date');
         if (localStorage.getItem('device')) document.getElementById('device').value = localStorage.getItem('device');
         if (localStorage.getItem('search')) document.getElementById('search-input').value = localStorage.getItem('search');
-
+        versionSelect.value = localStorage.getItem('version') || "";
+        buildSelect.value = localStorage.getItem('build') || "";
         // re-trigger search
         searchInput.dispatchEvent(new Event('input'));
 
@@ -111,16 +135,21 @@ document.getElementById('fetch-btn').addEventListener('click', async () => {
     const mode = modeSelector.value;
     const relative = document.getElementById('relative').value;
     const model = document.getElementById('device').value;
+    const version = document.getElementById('version').value;
+    const build = document.getElementById('build').value;
 
     let body = { mode };
 
-    if (mode === "relative" && relative) body.relative = relative;
-    else if (mode === "custom") {
+    if (mode === "relative" && relative) {
+        body.relative = relative;
+    } else if (mode === "custom") {
         body.from_date = document.getElementById('from_date').value;
         body.to_date = document.getElementById('to_date').value;
     }
 
     if (model) body.model = model;
+    if (version) body.version = version;
+    if (build) body.build = build;
 
     // ===== Store Filters Before Reload =====
     localStorage.setItem('mode', mode);
@@ -129,6 +158,8 @@ document.getElementById('fetch-btn').addEventListener('click', async () => {
     localStorage.setItem('to_date', document.getElementById('to_date').value);
     localStorage.setItem('device', model);
     localStorage.setItem('search', searchInput.value);
+    localStorage.setItem('version', version);
+    localStorage.setItem('build', build);
 
     const res = await fetch('/api/link-events', {
         method: 'POST',
@@ -138,8 +169,7 @@ document.getElementById('fetch-btn').addEventListener('click', async () => {
 
     const data = await res.json();
     if (data.success) {
-        // alert('✅ Events fetched, linked & validated!');
-        location.reload(); 
+        location.reload();
     } else {
         alert("❌ Failed: " + data.error);
     }

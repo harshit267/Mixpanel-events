@@ -4,9 +4,20 @@ module.exports = {
     allowedDevices: [
         "MAR-LX2",
         "V2205",
-        "SM-M526B",
-        "iPhone13,4",
-        // Add more devices you want to filter on
+        "SM-A032F"
+    ],
+
+    allowedVersions: [
+        "1.0",
+        "1.1",
+        "1.2"
+    ],
+
+    allowedBuilds: [
+        "17",
+        "18",
+        "19",
+        "20"
     ],
 
     durations: [
@@ -18,5 +29,5 @@ module.exports = {
         { label: "Last 30 days", value: "30d" }
     ],
 
-    defaultDuration: "7d" 
+    defaultDuration: "7d"
 };

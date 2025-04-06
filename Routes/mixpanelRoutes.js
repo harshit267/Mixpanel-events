@@ -63,7 +63,11 @@ router.post('/fetch-mixpanel-events', async (req, res) => {
     try {
         
         const { mode, relative, from_date, to_date, namespace, model } = req.body;
+        const { version, build } = req.body;
+
+
         const finalNamespace = namespace || mixpanelConfig.namespace;
+        
 
         let finalFromDate, finalToDate;
 
@@ -90,8 +94,9 @@ router.post('/fetch-mixpanel-events', async (req, res) => {
             return res.status(400).json({ success: false, error: "mode must be relative or custom" });
         }
 
-        const events = await fetchDynamicMixpanelEvents(finalFromDate, finalToDate, finalNamespace, model || null);
+        // const events = await fetchDynamicMixpanelEvents(finalFromDate, finalToDate, finalNamespace, model || null);
 
+        const events = await fetchDynamicMixpanelEvents(finalFromDate, finalToDate, finalNamespace, model || null, version || null, build || null);
         // ✅ Apply strict filter & sort
         const finalEvents = filterAndSortEvents(events, finalFromDate, finalToDate);
 
@@ -110,10 +115,13 @@ router.get('/get-config', (req, res) => {
         success: true,
         namespace: mixpanelConfig.namespace,
         allowedDevices: mixpanelConfig.allowedDevices,
+        allowedVersions: mixpanelConfig.allowedVersions,
+        allowedBuilds: mixpanelConfig.allowedBuilds,
         durations: mixpanelConfig.durations,
         defaultDuration: mixpanelConfig.defaultDuration
     });
 });
+
 
 
 module.exports = router; 

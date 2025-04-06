@@ -142,23 +142,84 @@ function tryMatch(mixpanelName, node) {
 //     return linkedList;
 // }
 
-async function updateLinkedListWithMixpanel({ mode, relative, from_date, to_date, model }) {
+// async function updateLinkedListWithMixpanel({ mode, relative, from_date, to_date, model }) {
+//     const skipEvents = ["Application Installed", "Application Opened", "Application Backgrounded"];
+
+//     let linkedList = fs.existsSync(LINKED_LIST_PATH)
+//         ? JSON.parse(fs.readFileSync(LINKED_LIST_PATH, 'utf-8'))
+//         : createLinkedLists();
+
+//     // ✅ STEP 1: Reset all attached events
+//     linkedList.forEach(node => {
+//         node.LinkedList = []; // clear previous ones
+//     });
+
+//     // ----- Date calculation -----
+//     let finalFromDate, finalToDate;
+//     if (mode === 'relative') {
+//         const now = moment();
+//         const duration = relative || '7d';
+//         switch (duration) {
+//             case '10m': finalFromDate = now.clone().subtract(10, 'minutes'); break;
+//             case '60m': finalFromDate = now.clone().subtract(60, 'minutes'); break;
+//             case '24h': finalFromDate = now.clone().subtract(24, 'hours'); break;
+//             case '2d':  finalFromDate = now.clone().subtract(2, 'days'); break;
+//             case '7d':  finalFromDate = now.clone().subtract(7, 'days'); break;
+//             case '30d': finalFromDate = now.clone().subtract(30, 'days'); break;
+//             default:    finalFromDate = now.clone().subtract(10, 'minutes');
+//         }
+//         finalToDate = now;
+//     } else {
+//         finalFromDate = moment(from_date);
+//         finalToDate = moment(to_date);
+//     }
+
+//     console.log("Server Current Time:", moment().format());
+//     console.log("Final From Date:", finalFromDate.format());
+//     console.log("Final To Date:", finalToDate.format());
+
+//     const events = await fetchDynamicMixpanelEvents(finalFromDate, finalToDate, mixpanelConfig.namespace, model || null);
+//     console.log(`✅ Total Mixpanel events fetched: ${events.length}`);
+
+//     // ✅ STEP 2: Sort events in descending order by time
+//     events.sort((a, b) => b.time - a.time);
+
+//     // ✅ STEP 3: Attach freshly sorted events
+//     for (const mpEvent of events) {
+//         if (skipEvents.includes(mpEvent.name)) continue;
+
+//         for (const node of linkedList) {
+//             const matchedBy = tryMatch(mpEvent.name, node);
+
+//             if (matchedBy) {
+//                 node.LinkedList.push(mpEvent);
+//                 break; // ✅ Only attach once per event
+//             }
+//         }
+//     }
+
+//     fs.writeFileSync(LINKED_LIST_PATH, JSON.stringify(linkedList, null, 4));
+//     console.log('✅ All events reattached freshly and saved');
+
+//     return linkedList;
+// }
+
+async function updateLinkedListWithMixpanel({ mode, relative, from_date, to_date, model, version, build }) {
     const skipEvents = ["Application Installed", "Application Opened", "Application Backgrounded"];
 
     let linkedList = fs.existsSync(LINKED_LIST_PATH)
         ? JSON.parse(fs.readFileSync(LINKED_LIST_PATH, 'utf-8'))
         : createLinkedLists();
 
-    // ✅ STEP 1: Reset all attached events
     linkedList.forEach(node => {
-        node.LinkedList = []; // clear previous ones
+        node.LinkedList = [];
     });
 
-    // ----- Date calculation -----
+    // --- Date calculation ---
     let finalFromDate, finalToDate;
     if (mode === 'relative') {
         const now = moment();
-        const duration = relative || '10m';
+        const duration = relative || '7d';
         switch (duration) {
             case '10m': finalFromDate = now.clone().subtract(10, 'minutes'); break;
             case '60m': finalFromDate = now.clone().subtract(60, 'minutes'); break;
@@ -174,32 +235,36 @@ async function updateLinkedListWithMixpanel({ mode, relative, from_date, to_date
         finalToDate = moment(to_date);
     }
 
-    console.log("Server Current Time:", moment().format());
-    console.log("Final From Date:", finalFromDate.format());
-    console.log("Final To Date:", finalToDate.format());
+    console.log("🕒 Date Range:", finalFromDate.format(), "→", finalToDate.format());
 
-    const events = await fetchDynamicMixpanelEvents(finalFromDate, finalToDate, mixpanelConfig.namespace, model || null);
+    // ✅ Pass version and build here
+    const events = await fetchDynamicMixpanelEvents(
+        finalFromDate,
+        finalToDate,
+        mixpanelConfig.namespace,
+        model || null,
+        version || null,
+        build || null
+    );
+
     console.log(`✅ Total Mixpanel events fetched: ${events.length}`);
 
-    // ✅ STEP 2: Sort events in descending order by time
     events.sort((a, b) => b.time - a.time);
 
-    // ✅ STEP 3: Attach freshly sorted events
     for (const mpEvent of events) {
         if (skipEvents.includes(mpEvent.name)) continue;
 
         for (const node of linkedList) {
             const matchedBy = tryMatch(mpEvent.name, node);
-
             if (matchedBy) {
                 node.LinkedList.push(mpEvent);
-                break; // ✅ Only attach once per event
+                break;
             }
         }
     }
 
     fs.writeFileSync(LINKED_LIST_PATH, JSON.stringify(linkedList, null, 4));
-    console.log('✅ All events reattached freshly and saved');
+    console.log('✅ Linked list updated and saved');
 
     return linkedList;
 }
