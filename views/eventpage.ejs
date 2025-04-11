@@ -55,6 +55,12 @@
         </div>
 
         <!-- ========= Search Box ========= -->
+        <div style="margin: 10px 0;">
+            <label>
+                <input type="checkbox" id="auto-refresh-toggle" />
+                🔄 Enable Auto-Refresh
+            </label>
+        </div>
         <div class="search-box">
             <input type="text" id="search-input" placeholder="Search Events list...">
             <div id="no-result" class="no-result">No matching events found.</div>
@@ -152,12 +158,15 @@
             <% node.LinkedList.forEach(event => { %>
                 <div class="linked-event" style="border: 2px solid <%= validator.getBorderColor(event.properties, node.Props) %>;">
                     <p><strong>Event:</strong> <%= event.name %></p>
-                    <p><strong>Time:</strong> <%= new Date(event.time).toLocaleString('en-IN', {
-                        dateStyle: 'medium',
-                        timeStyle: 'short',
-                        timeZone: 'Asia/Kolkata',
-                        hour12: true
-                    }) %></p>
+                    <p><strong>Processed At:</strong> 
+                        <%= new Date(event.properties.mp_processing_time_ms).toLocaleString('en-IN', {
+                          dateStyle: 'medium',
+                          timeStyle: 'short',
+                          timeZone: 'Asia/Kolkata',
+                          hour12: true
+                        }) %>
+                      </p>
+                      
 
                     <p><strong>Properties:</strong></p>
                     <% const keyColorMap = validator.getKeyIssueMap(event.properties, node.Props); %>

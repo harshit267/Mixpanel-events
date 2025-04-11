@@ -73,7 +73,7 @@ router.post('/fetch-mixpanel-events', async (req, res) => {
 
         if (mode === 'relative') {
             const now = moment();
-            const durationValue = relative || '10m';
+            const durationValue = relative || '30d';
             switch (durationValue) {
                 case '10m': finalFromDate = now.clone().subtract(10, 'minutes'); break;
                 case '60m': finalFromDate = now.clone().subtract(60, 'minutes'); break;

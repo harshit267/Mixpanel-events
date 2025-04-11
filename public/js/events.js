@@ -1,3 +1,46 @@
+const autoRefreshToggle = document.getElementById('auto-refresh-toggle'); // create this toggle in HTML
+let autoRefreshInterval = null;
+
+function startAutoRefresh() {
+    stopAutoRefresh();
+    autoRefreshInterval = setInterval(() => {
+        const mode = modeSelector.value;
+        if (mode === 'relative') {
+            console.log('🔄 Auto-refreshing...');
+            document.getElementById('fetch-btn').click();
+        }
+    }, 60000); // refresh every 60 seconds (change as needed)
+}
+
+function stopAutoRefresh() {
+    if (autoRefreshInterval) {
+        clearInterval(autoRefreshInterval);
+        autoRefreshInterval = null;
+    }
+}
+
+if (autoRefreshToggle) {
+    autoRefreshToggle.addEventListener('change', () => {
+        if (autoRefreshToggle.checked) {
+            startAutoRefresh();
+            localStorage.setItem('autoRefresh', 'on');
+        } else {
+            stopAutoRefresh();
+            localStorage.setItem('autoRefresh', 'off');
+        }
+    });
+}
+
+// ------------------------ Restore Auto-Refresh Toggle State ------------------------
+
+window.addEventListener('DOMContentLoaded', () => {
+    const savedAuto = localStorage.getItem('autoRefresh');
+    if (savedAuto === 'on' && autoRefreshToggle) {
+        autoRefreshToggle.checked = true;
+        startAutoRefresh();
+    }
+});
+
 
 
 
