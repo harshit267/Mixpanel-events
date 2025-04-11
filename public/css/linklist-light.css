@@ -1,0 +1,240 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+h1 {
+    color: #222;
+    /* border: 2px solid black; */
+    text-align: center;
+    font-size: 35px;
+    text-decoration: underline;
+}
+.properties-button{
+    width: 15%;
+}
+.prop-head{
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.props-schema ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.props-schema li {
+    margin: 4px 0;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.props-schema strong {
+    color: #222;
+    font-weight: bold;
+}
+
+.props-schema code {
+    background: #eaeaea;
+    padding: 3px 5px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #333;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.fetch-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* border: 2px solid black; */
+    width: 20%;
+}
+#search-input{
+    width: 100%;
+    border: 1px solid #5e6fff;
+}
+
+input, select, button {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #5e6fff;
+    font-size: 14px;
+    background-color: #fff;
+    color: #222;
+}
+
+button {
+    background-color: #5e6fff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #798dff;
+}
+
+.events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: auto;
+    min-height: 600px;
+}
+
+.event-block {
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 400px;
+    width: 97%;
+    height: 450px;
+    overflow: auto;
+    background-color: #ffffff;
+    border: 1px solid #5e6fff;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.seg-event, .mix-event {
+    height: 100%;
+    overflow: scroll;
+    min-width: fit-content;
+    /* border: 1px solid #5e6fff; */
+}
+
+.seg-event{
+    min-width: 300px;
+    padding: 10px;
+}
+
+.linked-event {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+    /* margin-top: 10px; */
+    height: 90%;
+    overflow-y: scroll;
+    min-width: 400px;
+    border: 1px solid #5e6fff;
+}
+
+.linked-event pre {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 5px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 12px;
+}
+.linked-event p{}
+
+.prop-head { color: #5e6fff; }
+.no-result { text-align: center; color: red; margin-top: 10px; display: none; }
+.hidden { display: none; }
+
+.mix-event{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    overflow-y: scroll;
+    gap: 10px;
+    
+}
+
+.event-summary-box{
+    border: 1px solid #5e6fff;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+
+}
+
+.summary-box {
+    font-family: 'Nunito', sans-serif;
+    /* border: 1px solid #ddd; */
+    text-align: center;
+    font-size: 20px;
+    
+}
+.summary-box-1 {
+    font-family: 'Nunito', sans-serif;
+    /* border: 1px solid #ddd; */
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+.summary-box ul {
+    list-style-type: disc;
+}
+.summary-grid {
+    display: flex;
+    flex-wrap: wrap;                    
+    gap: 12px;
+    margin-top: 16px;
+    width: 100%;
+    justify-content: space-evenly;
+    /* border: 2px solid #e50707; */
+    /* min-height: 100px; */
+}
+
+.stat-box {
+    flex: 1 0 150px;                    
+    max-width: 180px;
+    padding: 16px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.05);
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    /* min-height: 80px; */
+    /* transition: transform 0.2s ease; */
+}
+
+.stat-box:hover {
+    /* transform: translateY(-2px); */
+}
+
+.stat-box .count {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #1a202c;
+}
+
+.stat-box .total {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.stat-box a {
+    color: #6b46c1;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+/* Border color overrides */
+.stat-red { border-color: #e53e3e; }
+.stat-orange { border-color: #dd6b20; }
+.stat-purple { border-color: #805ad5; }
+.stat-green { border-color: #38a169; }
+.stat-gray { border-color: #718096; }

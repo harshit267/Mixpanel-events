@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linked List With Events (Mixpanel)</title>
-    <link rel="stylesheet" href="/css/linklist2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/css/linklist-dark.css"> -->
+    <link rel="stylesheet" href="/css/linklist-light.css">
 </head>
 
 <body>
@@ -25,7 +27,7 @@
             <div id="relative-selector">
                 <label for="relative">Duration:</label>
                 <select id="relative">
-                    <option value="">-- Select Duration --</option> <!-- Will be filled from config -->
+                    <option value="">Last 7 Days</option> 
                 </select>
             </div>
 
@@ -36,52 +38,195 @@
 
             <label for="device">Device:</label>
             <select id="device">
-                <option value="">-- Select Device --</option> <!-- Will be filled from config -->
+                <option value=""> All Devices </option>
+            </select>
+
+            <label for="version">Version:</label>
+            <select id="version">
+                <option value="">All Versions</option>
+            </select>
+
+            <label for="build">Build:</label>
+            <select id="build">
+                <option value="">All Builds</option>
             </select>
 
             <button id="fetch-btn">Fetch Events</button>
         </div>
 
         <!-- ========= Search Box ========= -->
+        <div style="margin: 10px 0;">
+            <label>
+                <input type="checkbox" id="auto-refresh-toggle" />
+                🔄 Enable Auto-Refresh
+            </label>
+        </div>
         <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search linked list...">
+            <input type="text" id="search-input" placeholder="Search Events list...">
             <div id="no-result" class="no-result">No matching events found.</div>
         </div>
     </div>
 
     <!-- ========= LINKED LIST (Rendered by EJS immediately) ========= -->
     <div class="events-container" id="events-container">
-        <% linkedList.forEach(node => { %>
-            <div class="event-block">
-                <div class="seg-event">
-                    <p><span class="prop-head">Interface:</span> <span class="interface-text"><%= node.Interface %></span></p>
-                    <p><span class="prop-head">Identify:</span> <span class="identify-text"></span></p>
-                    <% if (node.Props) { %>
-                        <p><span class="prop-head">Props:</span>
-                            <pre class="props-text"><%= JSON.stringify(node.Props, null, 2) %></pre>
-                        </p>
-                    <% } else { %>
-                        <p><span class="prop-head">Props:</span> None</p>
-                    <% } %>
-                </div>
 
-                <div class="mix-event">
-                    <% node.LinkedList.forEach(event => { %>
-                        <div class="linked-event">
-                            <p><strong>Event:</strong> <%= event.name %></p>
-                            <p><strong>Time:</strong> <%= new Date(event.time).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' }) %></p>
-                            <p><strong>Properties:</strong></p>
-                            <pre><%= JSON.stringify(event.properties, null, 2) %></pre>
-                            <% if(node.Props) { %>
-                                <div>
-                                    <%- validator.renderValidationHTML(event.properties, node.Props) %>
-                                </div>
-                            <% } %>
-                        </div>
-                    <% }) %>
+        <button class="properties-button" id="toggle-props-btn" style="margin: 10px 0; padding: 5px 10px;">Show All Properties</button>
+        <!-- 📊 Event Validation Summary -->
+        <div class="event-summary-box">
+            <div class="summary-box" style="margin-bottom: 10px;">
+                <h3>📊 Event Summary</h3>
+            </div>
+
+            <!-- ✅ CORE METRICS -->
+            <div class="summary-grid">
+                <div class="stat-box stat-gray">
+                    <div class="count"><%= summary.totalEvents %></div>
+                    <div class="total">Total Events</div>
+                </div>
+                <div class="stat-box stat-green">
+                    <div class="count"><%= summary.validEvents %></div>
+                    <div class="total">Correct Events</div>
+                </div>
+                <div class="stat-box stat-red">
+                    <div class="count"><%= summary.totalEvents - summary.validEvents %></div>
+                    <div class="total">Incorrect Events</div>
                 </div>
             </div>
-        <% }) %>
+
+            <div class="summary-box-1" style="margin-bottom: 10px;">
+                <h3> Count of Events With Issues </h3>
+            </div>
+
+            <!-- ⚠️ ISSUE BREAKDOWN -->
+            <div class="summary-grid" style="margin-top: 16px;">
+                <div class="stat-box stat-red">
+                    <div class="count"><%= summary.issues.missingRequired %></div>
+                    <div class="total">Missing Required Keys</div>
+                </div>
+                <div class="stat-box stat-red">
+                    <div class="count"><%= summary.issues.emptyRequired %></div>
+                    <div class="total">Empty Required Fields</div>
+                </div>
+                <div class="stat-box stat-orange">
+                    <div class="count"><%= summary.issues.missingOptional %></div>
+                    <div class="total">Missing Optional Keys</div>
+                </div>
+                <div class="stat-box stat-orange">
+                    <div class="count"><%= summary.issues.emptyOptional %></div>
+                    <div class="total">Empty Optional Fields</div>
+                </div>
+                <div class="stat-box stat-purple">
+                    <div class="count"><%= summary.issues.typeMismatch %></div>
+                    <div class="total">Type/Value Mismatches</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- ✅ NODES WITH LINKED EVENTS FIRST -->
+<% linkedList.filter(node => node.LinkedList && node.LinkedList.length > 0).forEach(node => { %>
+    <div class="event-block">
+        <div class="seg-event">
+            <p><span class="prop-head">Interface:</span> <span class="interface-text"><%= node.Interface %></span></p>
+
+            <% if (node.Props) { %>
+                <div class="props-schema">
+                    <p><span class="prop-head">Props:</span></p>
+                    <% if (Array.isArray(node.Props.properties) && node.Props.properties.length > 0) { %>
+                        <ul>
+                            <% node.Props.properties.forEach(prop => { %>
+                                <li>
+                                    <strong><%= prop.name %><%= prop.optional ? " ?" : "" %>:</strong> 
+                                    <%= Array.isArray(prop.type) ? prop.type.join(" | ") : prop.type %>
+                                    <% if (prop.values) { %>
+                                        : [<%= prop.values.join(", ") %>]
+                                    <% } %>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    <% } else { %>
+                        <p><strong>Props<%= node.Props.optional ? " ?" : "" %>:</strong> <%= node.Props.type || "unknown" %></p>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <p><span class="prop-head">Props:</span> None</p>
+            <% } %>
+        </div>
+
+        <div class="mix-event">
+            <% node.LinkedList.forEach(event => { %>
+                <div class="linked-event" style="border: 2px solid <%= validator.getBorderColor(event.properties, node.Props) %>;">
+                    <p><strong>Event:</strong> <%= event.name %></p>
+                    <p><strong>Processed At:</strong> 
+                        <%= new Date(event.properties.mp_processing_time_ms).toLocaleString('en-IN', {
+                          dateStyle: 'medium',
+                          timeStyle: 'short',
+                          timeZone: 'Asia/Kolkata',
+                          hour12: true
+                        }) %>
+                      </p>
+                      
+
+                    <p><strong>Properties:</strong></p>
+                    <% const keyColorMap = validator.getKeyIssueMap(event.properties, node.Props); %>
+                    <ul class="event-properties">
+                        <% Object.entries(event.properties || {}).forEach(([key, value]) => { %>
+                            <% if (key.startsWith('$')) { %>
+                                <li class="hidden-prop" style="display:none;">
+                                    <strong><%= key %></strong>: <%= JSON.stringify(value) %>
+                                </li>
+                            <% } else { %>
+                                <% const color = keyColorMap[key] || 'Black'; %>
+                                <li>
+                                    <strong style="color: <%= color %>"><%= key %></strong>: <%= JSON.stringify(value) %>
+                                </li>
+                            <% } %>
+                        <% }) %>
+                    </ul>
+
+                    <% if (node.Props) { %>
+                        <div><%- validator.renderValidationHTML(event.properties, node.Props) %></div>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+<% }) %>
+
+<!-- 🚫 EMPTY NODES AFTER -->
+<% linkedList.filter(node => !node.LinkedList || node.LinkedList.length === 0).forEach(node => { %>
+    <div class="event-block empty-node">
+        <div class="seg-event">
+            <p><span class="prop-head">Interface:</span> <span class="interface-text"><%= node.Interface %></span></p>
+            <p><strong>⚠ No linked events</strong></p>
+
+            <% if (node.Props) { %>
+                <div class="props-schema">
+                    <p><span class="prop-head">Props:</span></p>
+                    <% if (Array.isArray(node.Props.properties) && node.Props.properties.length > 0) { %>
+                        <ul>
+                            <% node.Props.properties.forEach(prop => { %>
+                                <li>
+                                    <strong><%= prop.name %><%= prop.optional ? " ?" : "" %>:</strong> 
+                                    <%= Array.isArray(prop.type) ? prop.type.join(" | ") : prop.type %>
+                                    <% if (prop.values) { %>
+                                        : [<%= prop.values.join(", ") %>]
+                                    <% } %>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    <% } else { %>
+                        <p><strong>Props<%= node.Props.optional ? " ?" : "" %>:</strong> <%= node.Props.type || "unknown" %></p>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <p><span class="prop-head">Props:</span> None</p>
+            <% } %>
+        </div>
+    </div>
+<% }) %>
+
     </div>
 
     <script src="/js/events.js"></script>

@@ -4,8 +4,17 @@ const { updateLinkedListWithMixpanel } = require('../services/linkService'); // 
 
 router.post('/link-events', async (req, res) => {
     try {
-        const { mode, relative, from_date, to_date, model } = req.body;
-        const linkedList = await updateLinkedListWithMixpanel({ mode, relative, from_date, to_date, model });
+        const { mode, relative, from_date, to_date, model, version, build } = req.body;
+
+        const linkedList = await updateLinkedListWithMixpanel({
+            mode,
+            relative,
+            from_date,
+            to_date,
+            model,
+            version,
+            build
+        });
         res.json({ success: true, linkedList });
     } catch (error) {
         console.error('❌ Linking error:', error.message);
