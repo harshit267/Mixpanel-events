@@ -82,24 +82,53 @@ const searchInput = document.getElementById('search-input');
 const noResult = document.getElementById('no-result');
 
 searchInput.addEventListener('input', function () {
-    const search = this.value.toLowerCase();
-    const eventBlocks = document.querySelectorAll('.event-block');
-    let found = false;
+    const searchRaw = this.value;
+    const search = normalizeText(searchRaw);
+    const eventBlocks = Array.from(document.querySelectorAll('.event-block'));
+
+    let matchedBlocks = [];
 
     eventBlocks.forEach(block => {
-        const interfaceText = block.querySelector('.interface-text')?.innerText.toLowerCase() || "";
-        const propsText = block.querySelector('.props-text')?.innerText.toLowerCase() || "";
+        const interfaceText = block.querySelector('.interface-text')?.innerText || "";
+        const propsText = block.querySelector('.props-text')?.innerText || "";
 
-        if (interfaceText.includes(search) || propsText.includes(search)) {
-            block.classList.remove('hidden');
-            found = true;
+        const normalizedInterface = normalizeText(interfaceText);
+        const normalizedProps = normalizeText(propsText);
+
+        let relevance = 0;
+
+        if (normalizedInterface.includes(search)) {
+            relevance = 2; // High priority if interface matches
+        } else if (normalizedProps.includes(search)) {
+            relevance = 1; // Lower priority if only props match
+        }
+
+        if (relevance > 0) {
+            matchedBlocks.push({ block, relevance });
         } else {
             block.classList.add('hidden');
         }
     });
 
+    // Sort matched blocks by relevance (Interface matches first)
+    matchedBlocks.sort((a, b) => b.relevance - a.relevance);
+
+    // Show matched blocks in order
+    let found = matchedBlocks.length > 0;
+    matchedBlocks.forEach(({ block }) => block.classList.remove('hidden'));
+
+    // Move the matched blocks to top (re-order DOM)
+    const container = document.getElementById('events-container');
+    matchedBlocks.forEach(({ block }) => container.appendChild(block));
+
     noResult.style.display = found ? 'none' : 'block';
 });
+
+function normalizeText(text) {
+    return text.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+}
+
+
 
 // ------------------------ Load Config & Restore Filters ------------------------
 

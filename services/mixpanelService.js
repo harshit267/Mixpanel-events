@@ -152,7 +152,7 @@ const fetchDynamicMixpanelEvents = async (
 
     const events = response.data;
     events.sort((a, b) => b.time - a.time);
-    return events.slice(0, 500);
+    return events.slice(0, 2000);
 };
 
 

@@ -214,6 +214,7 @@ async function updateLinkedListWithMixpanel({ mode, relative, from_date, to_date
     linkedList.forEach(node => {
         node.LinkedList = [];
     });
+    console.log(model, version, build,relative, mode);
 
     // --- Date calculation ---
     let finalFromDate, finalToDate;
@@ -234,6 +235,7 @@ async function updateLinkedListWithMixpanel({ mode, relative, from_date, to_date
         finalFromDate = moment(from_date);
         finalToDate = moment(to_date);
     }
+    console.log(finalFromDate, finalToDate);
 
     console.log("🕒 Date Range:", finalFromDate.format(), "→", finalToDate.format());
 
